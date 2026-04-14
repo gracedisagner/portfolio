@@ -9,7 +9,7 @@
         :root {
             --bg-color: #0d0d0d;
             --card-bg: #1a1a1a;
-            --accent-color: #007bff; /* Можно поменять на оранжевый #ff6600, если любишь WB */
+            --accent-color: #007bff; 
             --text-main: #ffffff;
             --text-secondary: #a0a0a0;
         }
@@ -21,6 +21,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Шапка */
@@ -59,7 +60,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 20px;
+            padding: 60px 20px;
         }
 
         .section-title {
@@ -88,17 +89,6 @@
             border-color: var(--accent-color);
         }
 
-        .image-placeholder {
-            width: 100%;
-            aspect-ratio: 3 / 4; /* Идеально для карточек WB/Ozon */
-            background: #252525;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #444;
-            font-weight: bold;
-        }
-
         .portfolio-item img {
             width: 100%;
             display: block;
@@ -119,16 +109,84 @@
             margin: 10px 0 0 0;
         }
 
-        /* Футер (Контакты) */
+        /* СТИЛИ СЛАЙДЕРА */
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 3 / 4;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            border: 2px solid #333;
+            cursor: ew-resize;
+            user-select: none;
+        }
+
+        .comparison-slider img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
+        .img-after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .img-before {
+            z-index: 1;
+            filter: grayscale(0.4);
+        }
+
+        .slider-handle {
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--accent-color);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slider-handle::after {
+            content: "↔";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        /* Футер */
         footer {
-            padding: 100px 20px;
+            padding: 80px 20px;
             text-align: center;
             background: #0a0a0a;
         }
 
         .cta-button {
             display: inline-block;
-            background-color: var(--accent-color);
+            background-color: #24A1DE; /* Цвет Telegram */
             color: white;
             padding: 18px 40px;
             border-radius: 50px;
@@ -140,7 +198,7 @@
         }
 
         .cta-button:hover {
-            box-shadow: 0 0 30px rgba(0, 123, 255, 0.6);
+            box-shadow: 0 0 30px rgba(36, 161, 222, 0.5);
             transform: scale(1.05);
         }
 
@@ -153,67 +211,4 @@
 
     <header>
         <h1>Дизайн <br><span class="accent">Фотографий</span></h1>
-        <p class="hero-desc">Увеличиваю продажи на Wildberries и Ozon через продающий визуал и глубокую аналитику конкурентов.</p>
-        <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Заказать проект</a>
-    </header>
-
-    <div class="container">
-        <h2 class="section-title">Мои последние работы</h2>
-        <div class="grid">
-            
-            <div class="portfolio-item">
-                <img src="work1.jpg" alt="Дизайн инфографики">
-                <div class="item-info">
-                    <h3>Электроника</h3>
-                    <p>Цена:~400р</p>
-                </div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="work2.jpg" alt="Дизайн инфографики">
-                <div class="item-info">
-                    <h3>Карточка для Wildberries</h3>
-                    <p>Сделаю оригинальную кликабельную карточку для вашего товара на WB</p>
-                </div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="work3.jpg" alt="Дизайн инфографики">
-                <div class="item-info">
-                    <h3>Еще один пример карточки WB</h3>
-                    <p>Цена:~400р</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-<div class="container">
-        <h2 class="section-title">Результаты: До / После</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 30px;">Как дизайн меняет восприятие товара и повышает его ценность.</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-            
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <div style="display: flex; gap: 10px;">
-                    <div style="flex: 1; text-align: center;">
-                        <img src="before1.jpg" style="width: 100%; border-radius: 10px; opacity: 0.6; border: 1px solid #333;">
-                        <span style="font-size: 0.8rem; color: #ff4d4d; font-weight: bold; text-transform: uppercase;">До</span>
-                    </div>
-                    <div style="flex: 1; text-align: center;">
-                        <img src="after1.jpg" style="width: 100%; border-radius: 10px; border: 2px solid var(--accent-color); box-shadow: 0 0 15px rgba(0,123,255,0.3);">
-                        <span style="font-size: 0.8rem; color: #00ff88; font-weight: bold; text-transform: uppercase;">После</span>
-                    </div>
-                </div>
-                <p style="font-size: 0.9rem; text-align: center; color: #ccc;"><b>Задача:</b> выделить товар среди дешевых аналогов и подчеркнуть премиальность.</p>
-            </div>
-
-            </div>
-    </div>
-    <footer>
-        <h2>Готовы сделать лучшую карточку для WB или обработку фото?</h2>
-        <p>Для связи кнопка ниже.</p>
-        <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Написать в Telegram</a>
-    </footer>
-
-</body>
-</html>
+        <p class="hero-desc">Увеличиваю продажи на Wildberries и Ozon через продающий визуал и глубокую аналитику
