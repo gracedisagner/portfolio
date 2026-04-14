@@ -1,20 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мое Портфолио</title>
-</head>
-<body style="background-color: #121212; color: white; text-align: center; font-family: sans-serif; padding-top: 100px;">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инфографика для маркетплейсов | Портфолио</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --accent-color: #007bff; /* Можно поменять на оранжевый #ff6600, если любишь WB */
+            --text-main: #ffffff;
+            --text-secondary: #a0a0a0;
+        }
 
-    <h1 style="font-size: 50px;">ИНФОГРАФИКА <span style="color: #007bff;">ПРОДАЕТ</span></h1>
-    <p style="font-size: 20px; color: #888;">Сайт дизайнера инфографики. Скоро здесь будут сочные кейсы.</p>
-    
-    <div style="margin-top: 50px; padding: 40px; border: 2px dashed #333; border-radius: 20px;">
-        Здесь будет твоя лучшая карточка товара
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Шапка */
+        header {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .accent {
+            color: var(--accent-color);
+            text-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        /* Сетка портфолио */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 3 / 4; /* Идеально для карточек WB/Ozon */
+            background: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-weight: bold;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .item-info {
+            padding: 20px;
+        }
+
+        .item-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .item-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 10px 0 0 0;
+        }
+
+        /* Футер (Контакты) */
+        footer {
+            padding: 100px 20px;
+            text-align: center;
+            background: #0a0a0a;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 0 30px rgba(0, 123, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Дизайн <br><span class="accent">Инфографики</span></h1>
+        <p class="hero-desc">Увеличиваю продажи на Wildberries и Ozon через продающий визуал и глубокую аналитику конкурентов.</p>
+        <a href="https://t.me/твой_ник" class="cta-button">Заказать проект</a>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Мои последние работы</h2>
+        <div class="grid">
+            
+            <div class="portfolio-item">
+                <img src="work1.jpg" alt="Дизайн инфографики">
+                <div class="item-info">
+                    <h3>Электроника</h3>
+                    <p>Анализ болей ЦА + 5 карточек товара</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="work2.jpg" alt="Дизайн инфографики">
+                <div class="item-info">
+                    <h3>Косметика</h3>
+                    <p>Премиальный стиль для топовых продаж</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="work3.jpg" alt="Дизайн инфографики">
+                <div class="item-info">
+                    <h3>Товары для дома</h3>
+                    <p>Акцент на функциональность и уют</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <footer style="margin-top: 100px;">
-        <p>Напиши мне в Telegram: <b>@GRACEINMONTMARTRE</b></p>
+    <footer>
+        <h2>Готовы поднять CTR вашего товара?</h2>
+        <p>Напишите мне, и мы обсудим ваш проект уже сегодня.</p>
+        <a href="https://t.me/твой_ник" class="cta-button">Написать в Telegram</a>
     </footer>
 
 </body>
