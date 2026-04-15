@@ -5,37 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRACE DESIGNER | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
         :root {
-            --bg-dark: #080808;
-            --card-bg: #141414;
+            --bg-dark: #050505;
+            --card-bg: #0f0f0f;
             --wb-color: #8d43ff; 
             --text-main: #ffffff;
-            --text-secondary: #a0a0a0;
-            --glow: 0 0 15px rgba(141, 67, 255, 0.4);
+            --text-secondary: #888;
+            --glow: 0 0 20px rgba(141, 67, 255, 0.3);
         }
 
-        /* ТИХАЯ ПОДСВЕТКА ФОНА */
+        /* ЖИВОЙ ФОН С СЕТКОЙ И СВЕЧЕНИЕМ */
         body {
-            background: radial-gradient(circle at 50% -10%, #1a0a2e 0%, #080808 50%);
-            background-attachment: fixed;
+            background-color: var(--bg-dark);
+            background-image: 
+                linear-gradient(rgba(141, 67, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(141, 67, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px; /* Размер сетки */
             color: var(--text-main);
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* ВЕРХНЯЯ ПАНЕЛЬ С НИКОМ */
+        /* НЕОНОВЫЕ ПЯТНА ПО БОКАМ */
+        .glow-sphere {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(141, 67, 255, 0.15) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+            filter: blur(50px);
+        }
+        .sphere-1 { top: 10%; left: -200px; }
+        .sphere-2 { top: 50%; right: -200px; }
+        .sphere-3 { bottom: -100px; left: 20%; }
+
+        /* ВЕРХНЯЯ ПАНЕЛЬ */
         .navbar {
             padding: 20px;
             text-align: center;
-            background: rgba(8, 8, 8, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(141, 67, 255, 0.2);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -43,12 +59,10 @@
 
         .nickname {
             font-weight: 900;
-            font-size: 1.5rem;
-            letter-spacing: 3px;
+            font-size: 1.4rem;
+            letter-spacing: 4px;
             color: #fff;
-            text-transform: uppercase;
-            /* СВЕЧЕНИЕ НИКА */
-            text-shadow: 0 0 10px #fff, 0 0 20px var(--wb-color), 0 0 30px var(--wb-color);
+            text-shadow: 0 0 15px var(--wb-color);
         }
 
         header {
@@ -58,52 +72,59 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
+            position: relative;
         }
 
         h1 { 
-            font-size: clamp(2rem, 8vw, 4.5rem); 
+            font-size: clamp(2.2rem, 8vw, 4.5rem); 
             font-weight: 900; 
             margin: 0; 
             text-transform: uppercase; 
             line-height: 1.1;
+            z-index: 2;
         }
 
         .wb-text { 
             color: var(--wb-color); 
-            text-shadow: 0 0 30px rgba(141, 67, 255, 0.7);
-            text-transform: none;
+            text-shadow: 0 0 30px rgba(141, 67, 255, 0.6);
         }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        /* ОСНОВНОЙ КОНТЕЙНЕР С БОКОВЫМИ ЛИНИЯМИ */
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 80px 20px;
+            position: relative;
+            border-left: 1px solid rgba(141, 67, 255, 0.1);
+            border-right: 1px solid rgba(141, 67, 255, 0.1);
+        }
         
         .section-title { 
             font-size: 1.8rem; 
-            margin-bottom: 40px; 
+            margin-bottom: 50px; 
             border-left: 5px solid var(--wb-color); 
             padding-left: 15px; 
             text-transform: uppercase;
-            text-shadow: var(--glow);
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
         .portfolio-item {
             background: var(--card-bg);
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
             border: 1px solid #222;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.4s ease;
         }
 
         .portfolio-item:hover { 
-            transform: translateY(-10px); 
+            transform: translateY(-10px) scale(1.02); 
             border-color: var(--wb-color);
-            box-shadow: 0 10px 30px rgba(141, 67, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(141, 67, 255, 0.2);
         }
 
         .portfolio-item img { 
@@ -113,47 +134,50 @@
             background: #000;
         }
 
-        .item-info { padding: 25px; }
+        .item-info { padding: 25px; border-top: 1px solid #222; }
 
         /* БАННЕР ПРО АНИМАЦИЮ */
         .animated-banner {
-            background: linear-gradient(135deg, #141414 0%, #1e0a3a 100%);
-            border: 2px solid var(--wb-color);
-            box-shadow: 0 0 20px rgba(141, 67, 255, 0.3);
-            border-radius: 25px;
-            padding: 50px 20px;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a0a33 100%);
+            border: 1px solid rgba(141, 67, 255, 0.4);
+            border-radius: 30px;
+            padding: 60px 20px;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 100px;
+            position: relative;
+            overflow: hidden;
         }
 
         .cta-button {
             display: inline-block;
             background: var(--wb-color);
             color: white;
-            padding: 20px 45px;
-            border-radius: 50px;
+            padding: 20px 50px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
             transition: 0.3s;
             margin-top: 30px;
         }
         
         .cta-button:hover { 
-            box-shadow: 0 0 40px rgba(141, 67, 255, 0.6); 
-            transform: scale(1.05); 
+            box-shadow: 0 0 30px var(--wb-color); 
+            transform: translateY(-3px);
         }
 
-        footer { padding: 40px; text-align: center; opacity: 0.5; }
+        footer { padding: 60px; text-align: center; color: var(--text-secondary); font-size: 0.8rem; letter-spacing: 2px; }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .nickname { font-size: 1.2rem; }
+        @media (max-width: 1250px) {
+            .container { border: none; }
         }
     </style>
 </head>
 <body>
+
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+    <div class="glow-sphere sphere-3"></div>
 
     <nav class="navbar">
         <div class="nickname">GRACE DESIGNER</div>
@@ -161,31 +185,31 @@
 
     <header>
         <h1>ДИЗАЙН <br>ИНФОГРАФИКИ <br>для <span class="wb-text">Wildberries</span></h1>
-        <p style="color: var(--text-secondary); margin-top: 20px; max-width: 700px; font-size: 1.1rem;">
-            Профессиональная упаковка товаров. Делаю визуал, который выделяет вас среди конкурентов.
+        <p style="color: var(--text-secondary); margin-top: 25px; max-width: 600px; font-size: 1.1rem; font-weight: 400;">
+            Делаю карточки, которые продают. Ваш товар заметят среди тысяч конкурентов.
         </p>
     </header>
 
     <div class="container">
-        <h2 class="section-title">Мои работы</h2>
+        <h2 class="section-title">Кейсы</h2>
         <div class="grid">
-            <div class="portfolio-item"><img src="work1.jpg"><div class="item-info"><h3>Карточка "Электроника"</h3><p>Цена: от 400р</p></div></div>
-            <div class="portfolio-item"><img src="work2.jpg"><div class="item-info"><h3>Карточка "Телефон"</h3><p>Цена: от 400р</p></div></div>
-            <div class="portfolio-item"><img src="work3.jpg"><div class="item-info"><h3>Карточка "Гаджеты"</h3><p>Цена: от 500р</p></div></div>
-            <div class="portfolio-item"><img src="work4.jpg"><div class="item-info"><h3>Карточка для Детской одежды</h3><p>Цена: от 500р</p></div></div>
-            <div class="portfolio-item"><img src="work5.jpg"><div class="item-info"><h3>Карточка "Одежда"</h3><p>Цена: от 500р</p></div></div>
-            <div class="portfolio-item"><img src="work6.jpg"><div class="item-info"><h3>Стиль</h3><p>Цена: от 500р</p></div></div>
+            <div class="portfolio-item"><img src="work1.jpg"><div class="item-info"><h3>Электроника</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work2.jpg"><div class="item-info"><h3>Гаджеты</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work3.jpg"><div class="item-info"><h3>Аксессуары</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work4.jpg"><div class="item-info"><h3>Дом</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work5.jpg"><div class="item-info"><h3>Кухня</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work6.jpg"><div class="item-info"><h3>Красота</h3><p>Цена: от 400р</p></div></div>
         </div>
 
         <div class="animated-banner">
-            <h2 style="font-size: 2rem;">🔥 Добавь динамики!</h2>
-            <p style="font-size: 1.2rem;">Также могу сделать <b>анимированную картинку</b>, что добавит еще больше кликабельности вашей карточке.</p>
-            <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Написать</a>
+            <h2 style="font-size: 2.2rem; margin: 0;">🔥 АНИМАЦИЯ</h2>
+            <p style="color: var(--text-secondary); margin-top: 15px;">Создаю анимированные обложки, которые повышают CTR карточки на 30-50%.</p>
+            <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Оформить заказ</a>
         </div>
     </div>
 
     <footer>
-        <p>TG: @GRACEINMONTMARTRE | GRACE DESIGNER 2026</p>
+        <p>© 2026 GRACE DESIGNER | ALL RIGHTS RESERVED</p>
     </footer>
 
 </body>
