@@ -3,47 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Design</title>
+    <title>Дизайн карточек для Wildberries | Портфолио</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { background: #0d0d0d; color: #fff; font-family: sans-serif; margin: 0; padding: 0; }
-        header { height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: #1a1a1a; text-align: center; }
-        h1 { font-size: 3rem; margin: 0; color: #007bff; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-        .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .card { background: #1a1a1a; border: 1px solid #333; border-radius: 15px; width: 320px; overflow: hidden; }
-        .card img { width: 100%; display: block; }
-        .card-info { padding: 15px; }
-        .comp-flex { display: flex; gap: 20px; margin-top: 20px; }
-        .comp-item { flex: 1; position: relative; border-radius: 10px; overflow: hidden; }
-        .comp-item img { width: 100%; display: block; }
-        .tag { position: absolute; top: 10px; left: 10px; padding: 5px 10px; font-weight: bold; border-radius: 5px; font-size: 12px; }
-        .btn { display: inline-block; background: #24A1DE; color: #fff; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; margin-top: 20px; }
-        @media (max-width: 700px) { .comp-flex { flex-direction: column; } }
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: #1a1a1a;
+            --accent-color: #007bff; /* Можно поменять на оранжевый #ff6600, если любишь WB */
+            --text-main: #ffffff;
+            --text-secondary: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Шапка */
+        header {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 100%);
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .accent {
+            color: var(--accent-color);
+            text-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
+        }
+
+        .hero-desc {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-top: 20px;
+        }
+
+        /* Сетка портфолио */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: transform 0.4s ease, border-color 0.4s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            aspect-ratio: 3 / 4; /* Идеально для карточек WB/Ozon */
+            background: #252525;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-weight: bold;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .item-info {
+            padding: 20px;
+        }
+
+        .item-info h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .item-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 10px 0 0 0;
+        }
+
+        /* Футер (Контакты) */
+        footer {
+            padding: 100px 20px;
+            text-align: center;
+            background: #0a0a0a;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 0 30px rgba(0, 123, 255, 0.6);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>ДИЗАЙН КАРТОЧЕК</h1>
-        <p>Продающий визуал для маркетплейсов</p>
-        <a href="https://t.me/GRACEINMONTMARTRE" class="btn">ЗАКАЗАТЬ ДИЗАЙН</a>
+        <h1>Дизайн <br><span class="accent">Инфографики</span></h1>
+        <p class="hero-desc">Увеличиваю продажи на Wildberries и Ozon через продающий визуал и глубокую аналитику конкурентов.</p>
+        <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Заказать проект</a>
     </header>
+
     <div class="container">
-        <h2>Мои работы</h2>
+        <h2 class="section-title">Мои последние работы</h2>
         <div class="grid">
-            <div class="card"><img src="work1.jpg"><div class="card-info"><h3>Электроника</h3></div></div>
-            <div class="card"><img src="work2.jpg"><div class="card-info"><h3>Инфографика</h3></div></div>
-            <div class="card"><img src="work3.jpg"><div class="card-info"><h3>Товары для дома</h3></div></div>
+            
+            <div class="portfolio-item">
+                <img src="work1.jpg" alt="Дизайн инфографики">
+                <div class="item-info">
+                    <h3>Электроника</h3>
+                    <p>Анализ болей ЦА + 5 карточек товара</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="work2.jpg" alt="Дизайн инфографики">
+                <div class="item-info">
+                    <h3>Косметика</h3>
+                    <p>Премиальный стиль для топовых продаж</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="work3.jpg" alt="Дизайн инфографики">
+                <div class="item-info">
+                    <h3>Товары для дома</h3>
+                    <p>Акцент на функциональность и уют</p>
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="container">
-        <h2>До / После</h2>
-        <div class="comp-flex">
-            <div class="comp-item"><span class="tag" style="background: red;">ДО</span><img src="before1.jpg"></div>
-            <div class="comp-item"><span class="tag" style="background: green;">ПОСЛЕ</span><img src="after1.jpg"></div>
-        </div>
+<div class="container">
+        <h2 class="section-title">Результаты: До / После</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 30px;">Как дизайн меняет восприятие товара и повышает его ценность.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+            
+            <div style="display: flex; flex-direction: column; gap: 15px;">
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1; text-align: center;">
+                        <img src="before1.jpg" style="width: 100%; border-radius: 10px; opacity: 0.6; border: 1px solid #333;">
+                        <span style="font-size: 0.8rem; color: #ff4d4d; font-weight: bold; text-transform: uppercase;">До</span>
+                    </div>
+                    <div style="flex: 1; text-align: center;">
+                        <img src="after1.jpg" style="width: 100%; border-radius: 10px; border: 2px solid var(--accent-color); box-shadow: 0 0 15px rgba(0,123,255,0.3);">
+                        <span style="font-size: 0.8rem; color: #00ff88; font-weight: bold; text-transform: uppercase;">После</span>
+                    </div>
+                </div>
+                <p style="font-size: 0.9rem; text-align: center; color: #ccc;"><b>Задача:</b> выделить товар среди дешевых аналогов и подчеркнуть премиальность.</p>
+            </div>
+
+            </div>
     </div>
-    <footer style="text-align: center; padding: 50px; opacity: 0.5;">
-        <p>TG: @GRACEINMONTMARTRE</p>
+    <footer>
+        <h2>Готовы заказать карточку для WB или фотошоп вашей фотографии?</h2>
+        <p>Пишите по кнопке ниже.</p>
+        <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Написать в Telegram</a>
     </footer>
+
 </body>
 </html>
