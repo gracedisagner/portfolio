@@ -3,23 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио</title>
-
-    <link rel="icon" type="image/png" href="favicon.png">
-
-    <style>
-        /* тут твои стили... */
-    </style>
-</head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дизайн карточек для Wildberries | Портфолио</title>
+    <title>Дизайн фото для маркетплейсов | Портфолио</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-color: #0d0d0d;
             --card-bg: #1a1a1a;
-            --accent-color: #007bff; /* Можно поменять на оранжевый #ff6600, если любишь WB */
+            --accent-color: #007bff; 
             --text-main: #ffffff;
             --text-secondary: #a0a0a0;
         }
@@ -33,9 +23,8 @@
             line-height: 1.6;
         }
 
-        /* Шапка */
         header {
-            height: 80vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -45,40 +34,13 @@
             padding: 20px;
         }
 
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 900;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: -2px;
-        }
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; margin: 0; text-transform: uppercase; }
+        .accent { color: var(--accent-color); text-shadow: 0 0 20px rgba(0, 123, 255, 0.4); }
 
-        .accent {
-            color: var(--accent-color);
-            text-shadow: 0 0 20px rgba(0, 123, 255, 0.4);
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .section-title { font-size: 2rem; margin-bottom: 40px; border-left: 5px solid var(--accent-color); padding-left: 15px; text-transform: uppercase; }
 
-        .hero-desc {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-top: 20px;
-        }
-
-        /* Сетка портфолио */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            margin-bottom: 40px;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
-        }
-
+        /* Сетка работ */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -90,52 +52,27 @@
             border-radius: 20px;
             overflow: hidden;
             border: 1px solid #333;
-            transition: transform 0.4s ease, border-color 0.4s ease;
+            transition: 0.3s;
         }
 
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-color);
-        }
+        .portfolio-item:hover { transform: translateY(-10px); border-color: var(--accent-color); }
+        .portfolio-item img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
+        .item-info { padding: 20px; }
 
-        .image-placeholder {
-            width: 100%;
-            aspect-ratio: 3 / 4; /* Идеально для карточек WB/Ozon */
-            background: #252525;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #444;
-            font-weight: bold;
-        }
-
-        .portfolio-item img {
-            width: 100%;
-            display: block;
-        }
-
-        .item-info {
-            padding: 20px;
-        }
-
-        .item-info h3 {
-            margin: 0;
-            font-size: 1.2rem;
-        }
-
-        .item-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin: 10px 0 0 0;
-        }
-
-        /* Футер (Контакты) */
-        footer {
-            padding: 100px 20px;
+        /* БЛОК ПРО АНИМАЦИЮ */
+        .animated-banner {
+            background: linear-gradient(45deg, #1a1a1a, #001a33);
+            border: 2px dashed var(--accent-color);
+            border-radius: 20px;
+            padding: 40px;
             text-align: center;
-            background: #0a0a0a;
+            margin-top: 50px;
         }
 
+        .animated-banner h2 { color: var(--accent-color); margin-top: 0; }
+        .animated-banner p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; }
+
+        footer { padding: 80px 20px; text-align: center; background: #0a0a0a; }
         .cta-button {
             display: inline-block;
             background-color: var(--accent-color);
@@ -144,85 +81,65 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
             transition: 0.3s;
             margin-top: 20px;
         }
-
-        .cta-button:hover {
-            box-shadow: 0 0 30px rgba(0, 123, 255, 0.6);
-            transform: scale(1.05);
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-        }
+        .cta-button:hover { box-shadow: 0 0 30px rgba(0, 123, 255, 0.5); transform: scale(1.05); }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Дизайн <br><span class="accent">Инфографики</span></h1>
-        <p class="hero-desc">Увеличиваю продажи на Wildberries и Ozon через продающий визуал и глубокую аналитику конкурентов.</p>
-        <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Заказать проект</a>
+        <h1>ДИЗАЙН <br><span class="accent">ПОРТФОЛИО</span></h1>
+        <p style="color: var(--text-secondary);">Продающий визуал для вашего бизнеса</p>
     </header>
 
     <div class="container">
-        <h2 class="section-title">Мои последние работы</h2>
+        <h2 class="section-title">Мои работы</h2>
         <div class="grid">
             
             <div class="portfolio-item">
-                <img src="work1.jpg" alt="Дизайн инфографики">
-                <div class="item-info">
-                    <h3>Карточка для наушников</h3>
-                    <p>Цена договорная</p>
-                </div>
+                <img src="work1.jpg" alt="Работа 1">
+                <div class="item-info"><h3>Электроника</h3><p>Цена: от 400р</p></div>
             </div>
 
             <div class="portfolio-item">
-                <img src="work2.jpg" alt="Дизайн инфографики">
-                <div class="item-info">
-                    <h3>Карточка для телефон</h3>
-                    <p>Премиальный стиль для топовых продаж</p>
-                </div>
+                <img src="work2.jpg" alt="Работа 2">
+                <div class="item-info"><h3>Инфографика WB</h3><p>Цена: от 400р</p></div>
             </div>
 
             <div class="portfolio-item">
-                <img src="work3.jpg" alt="Дизайн инфографики">
-                <div class="item-info">
-                    <h3>Карточка для микрофона</h3>
-                    <p>Скорее всего уже видели данную карточку :)</p>
-                </div>
+                <img src="work3.jpg" alt="Работа 3">
+                <div class="item-info"><h3>Товары для дома</h3><p>Цена: от 400р</p></div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="work4.jpg" alt="Работа 4">
+                <div class="item-info"><h3>Новый проект</h3><p>Цена: от 400р</p></div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="work5.jpg" alt="Работа 5">
+                <div class="item-info"><h3>Еще работа</h3><p>Цена: от 400р</p></div>
+            </div>
+
+            <div class="portfolio-item">
+                <img src="work6.jpg" alt="Работа 6">
+                <div class="item-info"><h3>Крутой дизайн</h3><p>Цена: от 400р</p></div>
             </div>
 
         </div>
-    </div>
-<div class="container">
-        <h2 class="section-title">Результаты: До / После</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 30px;">Как дизайн меняет восприятие товара и повышает его ценность.</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-            
-            <div style="display: flex; flex-direction: column; gap: 15px;">
-                <div style="display: flex; gap: 10px;">
-                    <div style="flex: 1; text-align: center;">
-                        <img src="before1.jpg" style="width: 100%; border-radius: 10px; opacity: 0.6; border: 1px solid #333;">
-                        <span style="font-size: 0.8rem; color: #ff4d4d; font-weight: bold; text-transform: uppercase;">До</span>
-                    </div>
-                    <div style="flex: 1; text-align: center;">
-                        <img src="after1.jpg" style="width: 100%; border-radius: 10px; border: 2px solid var(--accent-color); box-shadow: 0 0 15px rgba(0,123,255,0.3);">
-                        <span style="font-size: 0.8rem; color: #00ff88; font-weight: bold; text-transform: uppercase;">После</span>
-                    </div>
-                </div>
-                <p style="font-size: 0.9rem; text-align: center; color: #ccc;"><b>Задача:</b> выделить товар среди дешевых аналогов и подчеркнуть премиальность.</p>
-            </div>
 
-            </div>
+        <div class="animated-banner">
+            <h2>🔥 Добавь динамики!</h2>
+            <p>Также могу сделать <b>анимированную картинку</b>, что добавит еще больше кликабельности вашей карточке и выделит среди конкурентов.</p>
+            <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Узнать подробнее</a>
+        </div>
     </div>
+
     <footer>
-        <h2>Готовы заказать карточку для WB или фотошоп вашей фотографии?</h2>
-        <p>Пишите по кнопке ниже.</p>
-        <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Написать в Telegram</a>
+        <p>Связь в Telegram: @GRACEINMONTMARTRE</p>
+        <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button" style="background-color: #24A1DE;">Написать мне</a>
     </footer>
 
 </body>
