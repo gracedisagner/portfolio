@@ -40,7 +40,6 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
         .section-title { font-size: 2rem; margin-bottom: 40px; border-left: 5px solid var(--accent-color); padding-left: 15px; text-transform: uppercase; }
 
-        /* Сетка работ */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -53,13 +52,24 @@
             overflow: hidden;
             border: 1px solid #333;
             transition: 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
         .portfolio-item:hover { transform: translateY(-10px); border-color: var(--accent-color); }
-        .portfolio-item img { width: 100%; display: block; aspect-ratio: 3/4; object-fit: cover; }
-        .item-info { padding: 20px; }
+        
+        /* ИСПРАВЛЕННЫЙ БЛОК КАРТИНКИ */
+        .portfolio-item img { 
+            width: 100%; 
+            display: block; 
+            object-fit: contain; 
+            background: #000;
+        }
 
-        /* БЛОК ПРО АНИМАЦИЮ */
+        .item-info { padding: 20px; background: var(--card-bg); }
+        .item-info h3 { margin: 0; font-size: 1.2rem; }
+        .item-info p { color: var(--text-secondary); margin: 5px 0 0 0; }
+
         .animated-banner {
             background: linear-gradient(45deg, #1a1a1a, #001a33);
             border: 2px dashed var(--accent-color);
@@ -68,9 +78,6 @@
             text-align: center;
             margin-top: 50px;
         }
-
-        .animated-banner h2 { color: var(--accent-color); margin-top: 0; }
-        .animated-banner p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; }
 
         footer { padding: 80px 20px; text-align: center; background: #0a0a0a; }
         .cta-button {
@@ -84,7 +91,6 @@
             transition: 0.3s;
             margin-top: 20px;
         }
-        .cta-button:hover { box-shadow: 0 0 30px rgba(0, 123, 255, 0.5); transform: scale(1.05); }
     </style>
 </head>
 <body>
@@ -97,42 +103,17 @@
     <div class="container">
         <h2 class="section-title">Мои работы</h2>
         <div class="grid">
-            
-            <div class="portfolio-item">
-                <img src="work1.jpg" alt="Работа 1">
-                <div class="item-info"><h3>Электроника</h3><p>Цена: от 400р</p></div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="work2.jpg" alt="Работа 2">
-                <div class="item-info"><h3>Инфографика WB</h3><p>Цена: от 400р</p></div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="work3.jpg" alt="Работа 3">
-                <div class="item-info"><h3>Товары для дома</h3><p>Цена: от 400р</p></div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="work4.jpg" alt="Работа 4">
-                <div class="item-info"><h3>Новый проект</h3><p>Цена: от 400р</p></div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="work5.jpg" alt="Работа 5">
-                <div class="item-info"><h3>Еще работа</h3><p>Цена: от 400р</p></div>
-            </div>
-
-            <div class="portfolio-item">
-                <img src="work6.jpg" alt="Работа 6">
-                <div class="item-info"><h3>Крутой дизайн</h3><p>Цена: от 400р</p></div>
-            </div>
-
+            <div class="portfolio-item"><img src="work1.jpg"><div class="item-info"><h3>Электроника</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work2.jpg"><div class="item-info"><h3>Инфографика WB</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work3.jpg"><div class="item-info"><h3>Товары для дома</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work4.jpg"><div class="item-info"><h3>Гаджеты</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work5.jpg"><div class="item-info"><h3>Аксессуары</h3><p>Цена: от 400р</p></div></div>
+            <div class="portfolio-item"><img src="work6.jpg"><div class="item-info"><h3>Премиум дизайн</h3><p>Цена: от 400р</p></div></div>
         </div>
 
         <div class="animated-banner">
             <h2>🔥 Добавь динамики!</h2>
-            <p>Также могу сделать <b>анимированную картинку</b>, что добавит еще больше кликабельности вашей карточке и выделит среди конкурентов.</p>
+            <p>Также могу сделать <b>анимированную картинку</b>, что добавит еще больше кликабельности вашей карточке.</p>
             <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Узнать подробнее</a>
         </div>
     </div>
