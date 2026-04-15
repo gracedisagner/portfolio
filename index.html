@@ -3,44 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дизайн инфографики | Портфолио</title>
+    <title>GRACE DESIGNER | Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
         :root {
-            --bg-color: #0d0d0d;
-            --card-bg: #1a1a1a;
-            --accent-color: #007bff; 
-            --wb-color: #8d43ff; /* Фиолетовый WB */
+            --bg-dark: #080808;
+            --card-bg: #141414;
+            --wb-color: #8d43ff; 
             --text-main: #ffffff;
             --text-secondary: #a0a0a0;
+            --glow: 0 0 15px rgba(141, 67, 255, 0.4);
         }
 
+        /* ТИХАЯ ПОДСВЕТКА ФОНА */
         body {
-            background-color: var(--bg-color);
+            background: radial-gradient(circle at 50% -10%, #1a0a2e 0%, #080808 50%);
+            background-attachment: fixed;
             color: var(--text-main);
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Шапка */
+        /* ВЕРХНЯЯ ПАНЕЛЬ С НИКОМ */
+        .navbar {
+            padding: 20px;
+            text-align: center;
+            background: rgba(8, 8, 8, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nickname {
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            color: #fff;
+            text-transform: uppercase;
+            /* СВЕЧЕНИЕ НИКА */
+            text-shadow: 0 0 10px #fff, 0 0 20px var(--wb-color), 0 0 30px var(--wb-color);
+        }
+
         header {
-            height: 80vh;
+            height: 70vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #0d0d0d 100%);
             padding: 20px;
         }
 
         h1 { 
-            font-size: clamp(2rem, 7vw, 4rem); 
+            font-size: clamp(2rem, 8vw, 4.5rem); 
             font-weight: 900; 
             margin: 0; 
             text-transform: uppercase; 
@@ -49,18 +71,10 @@
 
         .wb-text { 
             color: var(--wb-color); 
-            text-shadow: 0 0 25px rgba(141, 67, 255, 0.5);
-            text-transform: none; /* Чтобы Wildberries читался мягче */
+            text-shadow: 0 0 30px rgba(141, 67, 255, 0.7);
+            text-transform: none;
         }
 
-        .hero-desc {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-top: 25px;
-            max-width: 600px;
-        }
-
-        /* Контейнер и Сетка */
         .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
         
         .section-title { 
@@ -68,12 +82,13 @@
             margin-bottom: 40px; 
             border-left: 5px solid var(--wb-color); 
             padding-left: 15px; 
-            text-transform: uppercase; 
+            text-transform: uppercase;
+            text-shadow: var(--glow);
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
@@ -81,16 +96,16 @@
             background: var(--card-bg);
             border-radius: 20px;
             overflow: hidden;
-            border: 1px solid #333;
-            transition: 0.3s;
+            border: 1px solid #222;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .portfolio-item:hover { 
             transform: translateY(-10px); 
-            border-color: var(--wb-color); 
+            border-color: var(--wb-color);
+            box-shadow: 0 10px 30px rgba(141, 67, 255, 0.2);
         }
 
-        /* Исправленные картинки (БЕЗ ЗУМА) */
         .portfolio-item img { 
             width: 100%; 
             display: block; 
@@ -98,51 +113,57 @@
             background: #000;
         }
 
-        .item-info { padding: 20px; }
-        .item-info h3 { margin: 0; font-size: 1.2rem; }
-        .item-info p { color: var(--text-secondary); margin-top: 5px; font-size: 0.9rem; }
+        .item-info { padding: 25px; }
 
-        /* Блок про анимацию */
+        /* БАННЕР ПРО АНИМАЦИЮ */
         .animated-banner {
-            background: linear-gradient(45deg, #1a1a1a, #2a0a4a);
-            border: 2px dashed var(--wb-color);
-            border-radius: 20px;
-            padding: 40px;
+            background: linear-gradient(135deg, #141414 0%, #1e0a3a 100%);
+            border: 2px solid var(--wb-color);
+            box-shadow: 0 0 20px rgba(141, 67, 255, 0.3);
+            border-radius: 25px;
+            padding: 50px 20px;
             text-align: center;
-            margin-top: 60px;
+            margin-top: 80px;
         }
 
-        /* Кнопки */
         .cta-button {
             display: inline-block;
-            background-color: var(--wb-color);
+            background: var(--wb-color);
             color: white;
-            padding: 18px 40px;
+            padding: 20px 45px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: 0.3s;
-            margin-top: 25px;
+            margin-top: 30px;
         }
         
         .cta-button:hover { 
-            box-shadow: 0 0 30px rgba(141, 67, 255, 0.4); 
+            box-shadow: 0 0 40px rgba(141, 67, 255, 0.6); 
             transform: scale(1.05); 
         }
 
-        footer { padding: 60px 20px; text-align: center; opacity: 0.7; font-size: 0.9rem; }
+        footer { padding: 40px; text-align: center; opacity: 0.5; }
 
         @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
+            h1 { font-size: 2.5rem; }
+            .nickname { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
+    <nav class="navbar">
+        <div class="nickname">GRACE DESIGNER</div>
+    </nav>
+
     <header>
         <h1>ДИЗАЙН <br>ИНФОГРАФИКИ <br>для <span class="wb-text">Wildberries</span></h1>
-        <p class="hero-desc">Создаю визуал, который заставляет нажать на карточку и повышает ваши продажи.</p>
-        <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Заказать проект</a>
+        <p style="color: var(--text-secondary); margin-top: 20px; max-width: 700px; font-size: 1.1rem;">
+            Профессиональная упаковка товаров. Делаю визуал, который выделяет вас среди конкурентов.
+        </p>
     </header>
 
     <div class="container">
@@ -157,14 +178,14 @@
         </div>
 
         <div class="animated-banner">
-            <h2>🔥 Добавь динамики!</h2>
-            <p>Также могу сделать <b>анимированную картинку</b>, что добавит еще больше кликабельности вашей карточке и выделит вас среди конкурентов.</p>
-            <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button" style="background: #24A1DE;">Написать </a>
+            <h2 style="font-size: 2rem;">🔥 Добавь динамики!</h2>
+            <p style="font-size: 1.2rem;">Также могу сделать <b>анимированную картинку</b>, что добавит еще больше кликабельности вашей карточке.</p>
+            <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Написать</a>
         </div>
     </div>
 
     <footer>
-        <p>TG: @GRACEINMONTMARTRE | 2026</p>
+        <p>TG: @GRACEINMONTMARTRE | GRACE DESIGNER 2026</p>
     </footer>
 
 </body>
