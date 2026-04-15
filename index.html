@@ -23,7 +23,7 @@
             background-image: 
                 linear-gradient(rgba(141, 67, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(141, 67, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px; /* Размер сетки */
+            background-size: 50px 50px;
             color: var(--text-main);
             font-family: 'Montserrat', sans-serif;
             margin: 0;
@@ -31,7 +31,6 @@
             overflow-x: hidden;
         }
 
-        /* НЕОНОВЫЕ ПЯТНА ПО БОКАМ */
         .glow-sphere {
             position: fixed;
             width: 400px;
@@ -45,7 +44,6 @@
         .sphere-2 { top: 50%; right: -200px; }
         .sphere-3 { bottom: -100px; left: 20%; }
 
-        /* ВЕРХНЯЯ ПАНЕЛЬ */
         .navbar {
             padding: 20px;
             text-align: center;
@@ -63,7 +61,6 @@
             letter-spacing: 4px;
             color: #fff;
             text-transform: uppercase;
-            /* УСИЛЕННОЕ СВЕЧЕНИЕ НИКА */
             text-shadow: 0 0 10px var(--wb-color), 0 0 20px var(--wb-color);
         }
 
@@ -91,7 +88,6 @@
             text-shadow: 0 0 30px rgba(141, 67, 255, 0.6);
         }
 
-        /* ОСНОВНОЙ КОНТЕЙНЕР С БОКОВЫМИ ЛИНИЯМИ */
         .container { 
             max-width: 1200px; 
             margin: 0 auto; 
@@ -136,83 +132,4 @@
             background: #000;
         }
 
-        .item-info { padding: 25px; border-top: 1px solid #222; }
-
-        /* БАННЕР ПРО АНИМАЦИЮ */
-        .animated-banner {
-            background: linear-gradient(135deg, #0f0f0f 0%, #1a0a33 100%);
-            border: 1px solid rgba(141, 67, 255, 0.4);
-            border-radius: 30px;
-            padding: 60px 20px;
-            text-align: center;
-            margin-top: 100px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--wb-color);
-            color: white;
-            padding: 20px 50px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 800;
-            text-transform: uppercase;
-            transition: 0.3s;
-            margin-top: 30px;
-        }
-        
-        .cta-button:hover { 
-            box-shadow: 0 0 30px var(--wb-color); 
-            transform: translateY(-3px);
-        }
-
-        footer { padding: 60px; text-align: center; color: var(--text-secondary); font-size: 0.8rem; letter-spacing: 2px; }
-
-        @media (max-width: 1250px) {
-            .container { border: none; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="glow-sphere sphere-1"></div>
-    <div class="glow-sphere sphere-2"></div>
-    <div class="glow-sphere sphere-3"></div>
-
-    <nav class="navbar">
-        <div class="nickname">GRACE DESIGNER</div>
-    </nav>
-
-    <header>
-        <h1>ДИЗАЙН <br>ИНФОГРАФИКИ <br>для <span class="wb-text">Wildberries</span></h1>
-        <p style="color: var(--text-secondary); margin-top: 25px; max-width: 600px; font-size: 1.1rem; font-weight: 400;">
-            Делаю карточки, благодаря которым продаются тысячи товаров. Ваш товар заметят среди тысяч конкурентов.
-        </p>
-    </header>
-
-    <div class="container">
-        <h2 class="section-title">Кейсы</h2>
-        <div class="grid">
-            <div class="portfolio-item"><img src="work1.jpg"><div class="item-info"><h3>Карточка "Электроника"</h3><p>Цена: от 400р</p></div></div>
-            <div class="portfolio-item"><img src="work2.jpg"><div class="item-info"><h3>Карточка "Телефон"</h3><p>Цена: от 400р</p></div></div>
-            <div class="portfolio-item"><img src="work3.jpg"><div class="item-info"><h3>Карточка "Гаджеты"</h3><p>Цена: от 500р</p></div></div>
-            <div class="portfolio-item"><img src="work4.jpg"><div class="item-info"><h3>Карточка для детской одежды</h3><p>Цена: от 500р</p></div></div>
-            <div class="portfolio-item"><img src="work5.jpg"><div class="item-info"><h3>Карточка "Одежда"</h3><p>Цена: от 500р</p></div></div>
-            <div class="portfolio-item"><img src="work6.jpg"><div class="item-info"><h3>"Стиль"</h3><p>Цена: от 500р</p></div></div>
-        </div>
-
-        <div class="animated-banner">
-            <h2 style="font-size: 2.2rem; margin: 0;">🔥 АНИМАЦИЯ</h2>
-            <p style="color: var(--text-secondary); margin-top: 15px;">Создаю анимированные обложки, которые повышают CTR карточки на 30-50%.</p>
-            <a href="https://t.me/GRACEINMONTMARTRE" class="cta-button">Оформить заказ</a>
-        </div>
-    </div>
-
-    <footer>
-        <p>GRACE DESIGNER </p>
-    </footer>
-
-</body>
-</html>
+        .item-info { padding: 25px; border-top
